@@ -3,11 +3,25 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Вітаю у менеджері паролів. Оберіть опцію да введіть її , натисніть enter щоб продоавжити")
-
+	fmt.Println("Вітаю у менеджері паролів")
+	fmt.Println("Якщо хочете вивести назви всіх збережених паролів - натисніть 1")
+	fmt.Println("Якщо хочете зберегти новий пароль - натисніть 2")
+	fmt.Println("Якщо хочете дістати збережений пароль - натисніть 3")
+	fmt.Println("Якщо хочете покинути програму  - натисніть 4")
 	var userChoice int
 
 	fmt.Scan(&userChoice)
 
-	fmt.Printf("User's choice -  %v", userChoice)
+	switch userChoice {
+	case 1:
+		fmt.Printf("Ви обрали -  %v", userChoice)
+	case 2:
+		fmt.Printf("Ви обрали -  %v", userChoice)
+	case 3:
+		fmt.Printf("Ви обрали -  %v", userChoice)
+	case 4:
+		fmt.Printf("Ви обрали -  %v", userChoice)
+	default:
+		fmt.Printf("Oберіть один с запропонованих варіанті від 1 до 4")
+	}
 }
