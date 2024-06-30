@@ -15,12 +15,17 @@ func main() {
 	switch userChoice {
 	case 1:
 		fmt.Printf("Ви обрали -  %v", userChoice)
+		ShowPasswords()
+
 	case 2:
 		fmt.Printf("Ви обрали -  %v", userChoice)
+		SavePassword()
 	case 3:
 		fmt.Printf("Ви обрали -  %v", userChoice)
+		GetPassword
 	case 4:
 		fmt.Printf("Ви обрали -  %v", userChoice)
+		ExitProgram()
 	default:
 		fmt.Printf("Oберіть один с запропонованих варіанті від 1 до 4")
 	}
