@@ -27,6 +27,7 @@ func StorePasswords(store *passwords.PasswordStore) {
 
 	writer.Flush()
 }
+
 func SavePassword(store *passwords.PasswordStore) {
 	scanner := bufio.NewScanner(os.Stdin)
 	var name, password string
@@ -67,4 +68,21 @@ func SavePassword(store *passwords.PasswordStore) {
 	store.SavePassword(name, password)
 	StorePasswords(store)
 	fmt.Println("\n✅   Пароль успіщно збережнео")
+}
+
+func ShowPasswords() {
+	file, err := os.Open(filePath)
+	if err != nil {
+		fmt.Printf("Помилка відкриття файлу: %v\n", err)
+		return
+	}
+
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	fmt.Println("🟢  Паролі, що збережені в список: ")
+	for scanner.Scan() {
+		line := scanner.Text()
+		fmt.Println(line)
+	}
 }

@@ -35,11 +35,8 @@ func main() {
 
 	switch userChoice {
 	case 1:
-		fmt.Printf("Ви обрали -  %v", userChoice)
-		// utils.ShowPasswords()
-
+		utils.ShowPasswords()
 	case 2:
-
 		utils.SavePassword(store)
 	case 3:
 		fmt.Printf("Ви обрали -  %v", userChoice)
