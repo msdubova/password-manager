@@ -37,13 +37,12 @@ func main() {
 	case 1:
 		utils.ShowPasswords()
 	case 2:
+
 		utils.SavePassword(store)
 	case 3:
-		fmt.Printf("Ви обрали -  %v", userChoice)
-		// store.GetPassword
-	case 4:
-		fmt.Printf("Ви обрали -  %v", userChoice)
-		// ExitProgram()
+
+		utils.GetPassword()
+
 	default:
 		fmt.Printf("Oберіть один с запропонованих варіанті від 1 до 4")
 	}

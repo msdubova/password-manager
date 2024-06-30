@@ -24,7 +24,6 @@ func StorePasswords(store *passwords.PasswordStore) {
 	for _, password := range store.Passwords {
 		fmt.Fprintf(writer, "%s:%s\n", password.Name, password.Value)
 	}
-
 	writer.Flush()
 }
 
@@ -65,6 +64,7 @@ func SavePassword(store *passwords.PasswordStore) {
 		}
 
 	}
+
 	store.SavePassword(name, password)
 	StorePasswords(store)
 	fmt.Println("\n✅   Пароль успіщно збережнео")
@@ -84,5 +84,41 @@ func ShowPasswords() {
 	for scanner.Scan() {
 		line := scanner.Text()
 		fmt.Println(line)
+	}
+}
+
+func GetPassword() {
+	scanner := bufio.NewScanner(os.Stdin)
+	fmt.Println("ВВедіть назву пароля, що хочете отримати")
+	if !scanner.Scan() {
+		fmt.Printf("Помилка введення даних", scanner.Err())
+		return
+	}
+
+	name := strings.TrimSpace(scanner.Text())
+
+	file, err := os.Open(filePath)
+	if err != nil {
+		fmt.Printf("Помилка відкриття файлу: %v\n", err)
+		return
+	}
+
+	defer file.Close()
+
+	found := false
+
+	scannerFile := bufio.NewScanner(file)
+	for scannerFile.Scan() {
+		line := strings.TrimSpace(scannerFile.Text())
+		parts := strings.Split(line, ":")
+		if len(parts) == 2 && parts[0] == name {
+			fmt.Printf("Пароль для %s: %s\n", name, parts[1])
+			found = true
+			break
+		}
+	}
+
+	if found == false {
+		fmt.Printf("Пароль з назвою '%s' не знайдено\n", name)
 	}
 }
