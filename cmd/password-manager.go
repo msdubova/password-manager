@@ -4,7 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"password-manager/internal/utils"
+
+	command "password-manager/internal/passwordsStorage"
 	"password-manager/pkg/passwords"
 	"strconv"
 )
@@ -25,7 +26,7 @@ func main() {
 		choice, err := strconv.Atoi(input)
 
 		if err != nil {
-			fmt.Println("ПОмилка при читанні даних користувача", err)
+			fmt.Println("ПОмилка при читанні даних користувача, Оберіть варіант від 1 до 4 ")
 			continue
 		}
 
@@ -35,15 +36,19 @@ func main() {
 
 	switch userChoice {
 	case 1:
-		utils.ShowPasswords()
+		command.ShowPasswords()
 	case 2:
 
-		utils.SavePassword(store)
+		command.SavePassword(store)
 	case 3:
 
-		utils.GetPassword()
+		command.GetPassword()
+
+	case 4:
+		fmt.Println("до побачення")
 
 	default:
 		fmt.Printf("Oберіть один с запропонованих варіанті від 1 до 4")
 	}
 }
+

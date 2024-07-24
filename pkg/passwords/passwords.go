@@ -1,6 +1,8 @@
 package passwords
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Password struct {
 	Name  string
@@ -16,6 +18,7 @@ func NewPasswordStore() *PasswordStore {
 }
 
 func (ps *PasswordStore) SavePassword(name, value string) {
+
 	newPassword := Password{Name: name, Value: value}
 
 	ps.Passwords = append(ps.Passwords, newPassword)
